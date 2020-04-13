@@ -40,7 +40,7 @@ x %% y # remainder from division
 
 5%%2 # remainder
 
-200^0.5 # squareroot
+200 ^ 0.5 # squareroot
 
 3+9*2000 # order of operations
 
@@ -72,8 +72,8 @@ isTRUE(x) # test if x is true
 "y" == "g"
 
 x = c(1:10)
-
-x>8
+x
+x > 8
 
 
 

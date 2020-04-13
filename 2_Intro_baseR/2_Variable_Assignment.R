@@ -160,7 +160,8 @@ my_randon_sample <- sample(seq(1,100), 2, replace = F) # here we randomly sample
 my_word_list = c("one", "two", "buckle", "my", "shoe", 1)
 
 length(my_word_list) # find number of items in vector
-
+nchar(my_word_list)
+nchar("this_can_be_long")
 
 # 4a) Operations on vectors composed of numeric values
 # If we apply an operation to numerical vector, it will apply to all elements. This is where 
@@ -194,7 +195,8 @@ all_letters = paste(my_letters,your_letters, sep = "-") # joins strings together
 my_word_list = c("one", "two", "buckle", "my", "shoe")
 
 grep("my", my_word_list) # returns index of matching substring
-
+grepl("ne", my_word_list) # returns index of matching substring
+my_word_list[grepl("ne", my_word_list)] # 
 
 strsplit("Maggie Bartkowska"," ") #split strings on a character
 

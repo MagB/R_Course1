@@ -30,5 +30,7 @@
 #  Let's install and call up the three packages we will be using for the remainder of this course. 
 # dplyr, tidyr, and ggplot2
 
+install.packages("dplyr")
+library(dplyr)
 
 

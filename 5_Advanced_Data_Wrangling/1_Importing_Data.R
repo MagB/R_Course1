@@ -16,8 +16,7 @@ read.table
 read.csv()
 
 
-my_csv_data = read.csv("4_Importing_Data/test_data/tb.csv", sep = "," , header = T, quote = "\"", na.strings = c("NA", " ", "999"))
-my_csv_data = read.csv("4_Importing_Data/test_data/tb.csv", sep = "," , header = T, quote = "\"", na.strings = c("NA", " ", "999"))
+my_csv_data = read.csv("5_Advanced_Data_Wrangling/test_data/tb.csv", sep = "," , header = T, quote = "\"", na.strings = c("NA", " ", "999"), stringsAsFactors = F)
 
 
 # Part 2. How to import directly from an Excel file. 
@@ -27,7 +26,7 @@ my_csv_data = read.csv("4_Importing_Data/test_data/tb.csv", sep = "," , header =
 install.packages("xlsx")
 library(xlsx)
 
-my_excel = read.xlsx("4_Importing_Data/test_data/tb.xlsx", sheetName = "tb")
+my_excel = read.xlsx("5_Advanced_Data_Wrangling/test_data/tb.xlsx", sheetName = "tb")
 
 
 # Part 3. SPSS and SAS 
@@ -40,8 +39,6 @@ install.packages("tidyr")
 library(haven)
 library(dplyr)
 
-test_sas_data = read_sas("4_Importing_Data/test_data/fake_census_test_file.sas7bdat")
-
-
+test_sas_data = read_sas("5_Advanced_Data_Wrangling/test_data/fake_census_test_file.sas7bdat")
 
   
