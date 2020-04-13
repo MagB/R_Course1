@@ -1,4 +1,4 @@
-#Intro to R/RStudio
+# Intro to R/RStudio
 April 2020
 
 R has become one of the most commonly used tools across many science and social science disciplines for data manipulation, statistical analysis and creating publication quality data visualizations.
