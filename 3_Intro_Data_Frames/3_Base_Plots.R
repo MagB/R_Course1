@@ -7,7 +7,7 @@
 
 
 #“The simple graph has brought more information to the data analyst’s mind than any other device.” — John Tukey
-
+airquality = airquality
 
 #  In this section we will explore the plots that are available as part of the base R package.
 # These are very handy to use to do quick data exploration. 
@@ -36,13 +36,13 @@ boxplot(x =  airquality[,1:4],
 
 # We can get more specific and look at the breakdown of the distribution of temperature within each month. 
 # We can also set the labels and define plot colors. 
-boxplot(Temp~Month,
-        data=airquality,
-        main="Different boxplots for each month",
-        xlab="Month Number",
-        ylab="Degree Fahrenheit",
-        col="orange",
-        border="brown"
+boxplot(Temp ~ Month,
+        data = airquality,
+        main = "Different boxplots for each month",
+        xlab = "Month Number",
+        ylab = "Degree Fahrenheit",
+        col = "orange",
+        border = "brown"
 )
 
 ?boxplot # Use the help file to explore all the available arguments. 
@@ -77,7 +77,7 @@ barplot(hotday_count,
         xlab="Month Number",
         ylab="Degree Celsius")
 
-
+?barplot
 # Part 4. Pie charts 
 # Although it's generally recommended to avoid pie charts, we can make one for the distribution
 # of hot days by month
@@ -99,7 +99,7 @@ plot(x = airquality$TempC,
 # test the hypothesis that there is a relationship between ozone concentration and daily temperature. 
 # We can perform a quick simple linear regression fit with least mean squares using the lm() function, which stands for linear model.
 # Let's take a moment and just explore the output from the model
-ozone_temp_lm = lm(airquality$Ozone~airquality$TempC)
+ozone_temp_lm = lm(airquality$Ozone ~ airquality$TempC)
 summary(ozone_temp_lm)
 
 
@@ -111,4 +111,4 @@ plot(x = airquality$TempC,
 title("The relationship between temperature and ozone")
 abline(reg = ozone_temp_lm)
 abline( h = mean(airquality$Ozone, na.rm  = T),col="red")
-abline( v = mean(airquality$Temp, na.rm  = T),col="blue")
+abline( v = mean(airquality$TempC, na.rm  = T),col="blue")

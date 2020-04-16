@@ -43,8 +43,7 @@ library(dplyr)
 # We will use the tuberculosis data from the WHO. The data is microdata reported on each 
 # confirmed case of tuberculosis by country, year, and a gender
 
-tb_data = read.csv("4_Advanced_Data_Wrangling/data/tb.csv", stringsAsFactors = F, header = T)
-
+tb_data = read.csv("5_Advanced_Data_Wrangling/data/tb.csv", stringsAsFactors = F, header = T)
 
 
 # always begin by getting to know your data
@@ -60,7 +59,8 @@ hist(tb_data$adult) #Number of new cases reported among people 15 - 64 years of 
 hist(tb_data$elderly) #Number of new cases reported among people over 64 years of age
 hist(tb_data$elderly[tb_data$elderly<20000]) 
    
-"United" %in% unique(tb_data$country) 
+
+
 # Let's start exploring how each of the 5 main functions wihtin dplyr help us quickly
 # query the data.
 
@@ -68,11 +68,13 @@ hist(tb_data$elderly[tb_data$elderly<20000])
 
 
 # Filter: Let's look at tb rates in the United States of America
-
-US_data = filter(tb_data, country == "United States of America")
+c
+US_data = filter(tb_data, country == "United States of America" )
+US_data = filter(tb_data, country == "United States of America" & adult >0 )
+US_data = filter(tb_data, country == "United States of America" | country == "Yemen" )
 
 # Select: Let's extract the column of adult cases only
-adult_cases = select(US_data, adult)
+adult_cases = select(US_data, c(adult, child, elderly))
 
 # Arrange (sort) the cases from smallest to largest
 adult_cases = arrange(adult_cases, adult)
@@ -84,11 +86,17 @@ adult_cases = arrange(adult_cases, desc(adult))
 # Mutate: Let's return to the full tb_data and make a new variable which is a count of all cases
 
 tb_data = mutate(tb_data, all = adult + child + elderly)
+tb_data = mutate(tb_data, adult_scaled = adult/5*9)
+tb_data = mutate(tb_data, all_sum = sum(adult, child, elderly, na.rm = T))
 
 
 # Summarise: Let's get a summary of all tb cases. What is the average cases?
+summarise(tb_data, mean_adult = mean(adult, na.rm =T))
+  
+  
 
-summarise(tb_data, mean = mean(adult + child + elderly, na.rm =T), sd = sd(adult + child + elderly, na.rm =T), total = sum(adult + child + elderly, na.rm =T))
+summarise(tb_data, mean_adult = mean(adult, na.rm =T), 
+  sd = sd(adult, na.rm =T))
 
 
 

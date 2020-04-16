@@ -20,7 +20,7 @@ my_vector[sample(seq(40,400,10),size=10)]
 
 # Q4. From the following vector extract the last entry
 set.seed(2)
-vector2= sample(seq(40,10000,1.25),size=2992000, replace = T)
+vector2 = sample(seq(40,10000,1.25),size=2, replace = T)
 vector2[length(vector2)] 
 
 
@@ -28,4 +28,7 @@ vector2[length(vector2)]
 # Q5. Can you figure out how to make a vector consisting of every third letter in the alphabet?
 # Set the values to an object called vector_values
 # Hint, start with the build in object LETTERS and apply the seq() function.
+B = "B"
+Letters = c("A", B)
+
 vector_values <- LETTERS[seq(1,length(LETTERS),3)]  

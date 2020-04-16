@@ -4,7 +4,7 @@
 #############################################################
 
 # Q1. Which of the following are NOT a valid R variable name?
-# A: _age and 2ligit2quit. Notice that RStudio indicates a problem on the line number
+# A: _age and 2ligit2quit  and ?toads. Notice that RStudio indicates a problem on the line number
 
 min_weight
 max_length
@@ -18,6 +18,7 @@ celsius2kelvin
 my_name = "Maggie Bartkowska"
 
 #  Q3. Can you add your name to the following list of names?
+my_name = "Maggie"
 name_lst  = c("Tristan  Garry", "Rory McGregor", "Francine Adobo")
 name_lst = c(name_lst, my_name)
 
@@ -30,6 +31,8 @@ length(name_lst)
 my_nums  = c(5,5,6,2,1,6,3,33)
 mean(my_nums)
 range(my_nums)
+min(my_nums)
+max(my_nums)
 
 # Q6. The equation of a line is y = bx + e. A: 205.692
 # Calculate the value of y in the following regression equation:
