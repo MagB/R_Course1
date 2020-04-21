@@ -57,18 +57,12 @@ https://github.com/MagB/R_Course1
 
 ### Day 7 
 *	Review 
-*	Joining and merging datasets
-
-### Day 8 
+*	Joining and merging datasets 
 *	Intro to ggplot2 (fast, easy, publication quality data viz)
-*	Exercises
 
-### Day 9
+### Day 8
 * 	Review
 * 	Special requests
  
-Beyond 4 weeks: Even_More_R 
--Importing different types of data  
--Fun with Loops 
--Writing fancy functions
+
 

@@ -16,15 +16,26 @@ celsius2kelvin
 
 # Q2. Assign your name to an object
 my_name = "Maggie Bartkowska"
+my_name <- "Maggie's need for coffee is"
+
+
 
 #  Q3. Can you add your name to the following list of names?
 my_name = "Maggie"
 name_lst  = c("Tristan  Garry", "Rory McGregor", "Francine Adobo")
 name_lst = c(name_lst, my_name)
 
+
 #  Q4. Count the number of names
 # A. now there should be 4 names
 length(name_lst)
+nchar(name_lst)
+
+
+
+
+
+
 
 #  Q5. Calculate the mean and range of the following set of numbers:
 
@@ -33,6 +44,7 @@ mean(my_nums)
 range(my_nums)
 min(my_nums)
 max(my_nums)
+range(my_nums)[2]
 
 # Q6. The equation of a line is y = bx + e. A: 205.692
 # Calculate the value of y in the following regression equation:

@@ -17,8 +17,8 @@
 # this file is housed in this exerise folder
 # you could also use the point and click method by pulling down the Tools menu and choose Import Data sets. 
 # Note this only works for 
-my_df = read.csv("Exercises/my_df.csv", header = T, stringsAsFactors = F, strip.white = T)
-
+my_df = read.csv("my_df.csv", header = T, stringsAsFactors = F, strip.white = T)
+?read.csv
 
 
 ##2.  Creating a dataset
@@ -27,6 +27,22 @@ my_df = read.csv("Exercises/my_df.csv", header = T, stringsAsFactors = F, strip.
 ## A variable called y with the last ten letters of the alphabet, in upper case and formatted as text/character.
 # (Hint: don't write out the letters of the alphabet.)
 ## A variable called y2 that alternates between the numbers 1 and 2. (This is not a typo.)
+
+x = c(1,2,3,4,5,6,7,8,9,10)
+x = seq(1, 10)
+
+
+
+
+y = LETTERS[-c(1:16)]
+y= LETTERS[length(LETTERS)-16:length(LETTERS)]
+
+
+y2 = rep(c(1,2), 5)
+
+q2 = data.frame(x,
+  y, 
+  y2)
 
 # the I function protects y from being turned into a factor in the data.frame function
 q3 <- data.frame(x = 1:10,
@@ -52,27 +68,37 @@ q3 <- data.frame(x = 1:10,
 # in decreasing order of cyl, increasing order of gear, and decreasing order of hp.
 # Hint: we did not explicitly review how to use baseR to sort, check out https://www.statmethods.net/management/sorting.html
 
+mt_cars_df = mtcars
 
 # the trick for this question is mixing ascending and descending orders in the order
 # function using math
+mtcars[c(4,5,7,1),]
 q4 <- mtcars[order(mtcars$cyl, -mtcars$gear, mtcars$hp, decreasing = TRUE), ]
 
 q4 <- mtcars[order(-mtcars$cyl, mtcars$gear, -mtcars$hp), ]
-
+row.names(q4)
 
 # As a comparison, here is how this would like using  dplyr. This makes the code  a bit more human reader friendly. 
 q4 <- arrange(mtcars, desc(cyl), gear, desc(hp))
 
+q4 = mtcars %>% arrange(desc(cyl), gear, desc(hp))
+
+
+
+
+
 # a little clearer with pipes
 q4 <- mtcars %>% arrange(desc(cyl), gear, desc(hp))
+class(q4)
 
-
-
+row.names(q4)
+row.names(mtcars)
 
 #4.   Selecting rows
 ## Create a new dataset that that keeps only the first 3 rows and the rows for Toyotas from the mtcars dataset. 
 # (Hint: you don't need to know which rows have Toyotas to answer this question.)
 # make a new column called 'model', find the index positions of Toyota and then make a vector with the positions you are pulling out of mtcars
+
 mtcars$model = row.names(mtcars) 
 toyota_positions = which(grepl('toyota', mtcars$model, ignore.case = TRUE))
 first_3_rows = seq(1,3)
@@ -102,10 +128,11 @@ q5 <- subset(mtcars,
 )
 
 # For comparison, here a dplyr way 
-q5 <- mtcars %>% filter(
-  seq_len(nrow(mtcars)) %in% 1:3 |
+q5 <- mtcars %>% 
+  filter(
+    seq_len(nrow(mtcars)) %in% 1:3 |
     grepl('toyota', row.names(mtcars), ignore.case = TRUE)
-)
+  )
 
 # a little clearer with pipes
 q5 <- mtcars %>%
@@ -119,8 +146,13 @@ q5 <- mtcars %>%
 
 #5. Selecting columns and rows
 #Create a new dataset that drops all the columns except mpg and carb and drops the first 10 rows from the mtcars dataset.
+
+
 new_mt_cars = mtcars[11:nrow(mtcars),c("mpg", "carb")]
-new_mt_cars = mtcars[-seq(1,10),c("mpg", "carb")]
+my_cols = c("mpg", "carb")
+new_mt_cars = mtcars[-seq(1,10),my_cols]
+
+mtcars %>% select(mpg, carb) %>%  filter(seq_len(nrow(mtcars)) %in% 11:nrow(mtcars))
 
 
 #6. Appending datasets
@@ -134,17 +166,24 @@ last_row_dup  = mtcars[dim(mtcars)[1],] # here we get the number of rows from th
 
 dup_data = rbind(mtcars,first_row_dup,last_row_dup)
 
+z = cbind(mtcars, first_row_dup)
+?cbind
 #7. Creating a new variable
 # Create a new variable in mtcars called x that is the sum of mpg and disp
 
 dup_data$x = dup_data$mpg + dup_data$disp
 
+dup_data = dup_data %>% mutate(x = mpg + disp, x1= mpg * disp , x3 = mpg/disp)
 
 
 #8. Filtering a dataset
 #Using the mtcars dataset, keep only the records with mpg greater than or equal to 15 and carb strictly less than 8.
 
-mpg_15ormore = mtcars[mtcars$mpg >= 15 & mtcars$carb < 8 ,]
+mpg_15ormore = mtcars[mtcars$mpg >= 15 & mtcars$carb < 8 , ]
+
+mtcars %>% filter(mpg >= 15 & carb < 8)
+
+library(swirl)
 
 
 

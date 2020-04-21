@@ -43,7 +43,8 @@ library(dplyr)
 # We will use the tuberculosis data from the WHO. The data is microdata reported on each 
 # confirmed case of tuberculosis by country, year, and a gender
 
-tb_data = read.csv("5_Advanced_Data_Wrangling/data/tb.csv", stringsAsFactors = F, header = T)
+tb_data = read.csv("/Users/Maggie/Documents/barcodes.csv", stringsAsFactors = F, header = T)
+
 
 
 # always begin by getting to know your data
@@ -51,7 +52,7 @@ summary(tb_data)
 str(tb_data)
 colnames(tb_data)
 
-counts <- table(tb_data$country )
+counts <- table(tb_data$country)
 barplot(counts, ylim = c(0,40))
 
 hist(tb_data$child) #Number of new cases reported among people 0 - 14 years of age
@@ -68,35 +69,73 @@ hist(tb_data$elderly[tb_data$elderly<20000])
 
 
 # Filter: Let's look at tb rates in the United States of America
-c
+
 US_data = filter(tb_data, country == "United States of America" )
+
+
+
+
 US_data = filter(tb_data, country == "United States of America" & adult >0 )
 US_data = filter(tb_data, country == "United States of America" | country == "Yemen" )
 
+US_data = filter(tb_data, grepl("United", country))
+
+
 # Select: Let's extract the column of adult cases only
-adult_cases = select(US_data, c(adult, child, elderly))
+my_cols =  c("adult", "child", "elderly")
+adult_cases = select(US_data, adult, child, elderly)
+
+
+
+
 
 # Arrange (sort) the cases from smallest to largest
 adult_cases = arrange(adult_cases, adult)
 
 # Arrange (sort) the cases from largest to smallest
-adult_cases = arrange(adult_cases, desc(adult))
+adult_cases = arrange(adult_cases, desc(adult), child)
 
 
 # Mutate: Let's return to the full tb_data and make a new variable which is a count of all cases
 
 tb_data = mutate(tb_data, all = adult + child + elderly)
-tb_data = mutate(tb_data, adult_scaled = adult/5*9)
+
+
+
+
+
+
+tb_data = mutate(tb_data, 
+  adult_scaled = adult/5*9, 
+  means_cases = mean(adult, na.rm = T))
+
+
+
+
+
 tb_data = mutate(tb_data, all_sum = sum(adult, child, elderly, na.rm = T))
 
 
 # Summarise: Let's get a summary of all tb cases. What is the average cases?
-summarise(tb_data, mean_adult = mean(adult, na.rm =T))
+summarise(tb_data, mean_adult = mean(adult, na.rm = T))
   
   
 
-summarise(tb_data, mean_adult = mean(adult, na.rm =T), 
+summarise(tb_data, 
+  mean_adult = mean(adult, na.rm =T), 
   sd = sd(adult, na.rm =T))
+
+
+
+
+
+summarise(tb_data, 
+  country_count = n_distinct(country), 
+  mean = mean(adult, na.rm = T), 
+  n = n(), 
+  miss = sum(is.na(adult) ), 
+  not_missing = sum(!is.na(adult)) )
+
 
 
 

@@ -3,7 +3,7 @@
 ## Intro to R/RStudio Feb 2020
 #############################################################
 library(tidyr)
-
+library(dplyr)
 ?data
 data()
 counties
@@ -48,7 +48,7 @@ world_pop_2017 = world_pop %>% select(country, indicator, "2017")
 # otherwise it does not know how to add missing e.g., sum(`2017`, na.rm = T)
 
 world_pop_2017t = world_pop_2017%>% filter(indicator == "SP.POP.TOTL")
-world_pop_2017t %>% summarise(Tot = sum(`2017`, na.rm =T))
+world_pop_2017t %>% summarise(Tot = sum(`2017`, na.rm =T)) 
 
 
 # 8. Using the entire dataset again, can you calculate the world's population for every year?
