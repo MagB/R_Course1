@@ -51,3 +51,56 @@ world_pop = world_bank_pop # It is good practice  manipulate a copy of the data 
 # Hint: Look at the notes in the advanced dplyr section. find a way to select the numeric columns of interest
 # and then search for a summarise function that can be applied to all 
  
+
+
+
+# 9. Let's make two datasets and look at different ways we can join them together
+df1 = data.frame(col1 = seq(1,1000, 10), 
+                 col2 = rep(2,100), 
+                 col3 = rep(c("A", "B"),50))
+
+
+df2 = data.frame(col1 = seq(1,1000, 10), 
+                 col2 = rep(255,100), 
+                 col3 = rep(c("A", "C"),50))
+
+
+# 9a, join the two dataframes (df1 and df2 created above) using col3 as the key. Keep all rows in df1 and match matches with df2.
+# You may need to change the variable types before joining. 
+# Hint: Did you get an error about joining with factors? How can you fix the variable type so that we can join on col3.
+# What happens to the other variables that are not being used as a by for the join ?
+
+
+
+
+
+
+# What happens when you join on 3 variables? 
+
+
+
+
+# 10. Let's use the have package and load the fake census data located in the folder called "4_Importing_Data/test_data"
+
+library(haven)
+my_census_2018 = read_sas("4_Importing_Data/test_data/fake_census_test_file.sas7bdat")
+
+# Add a variable for Year and set its value to 2018. Can you do it using base R and dplyr?
+
+
+# can you make a new dataset called my_census_2019 which is copy of the first 1000 rows of the 2018 dataset?
+# Make sure to change the variable Year to 2019
+
+
+
+# Lets make a new df called my_census and add the rows from 2019 to the bottom of the 2018 data
+
+
+
+
+# Can you find a function that can help highlight the duplicated rows?
+
+
+
+# Using the 2018 and 2019 files separately, can you combine them so that only rows where there are matching values in both sets
+
